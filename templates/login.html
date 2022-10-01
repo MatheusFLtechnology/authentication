@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <!--
+    login: admin
+    password:admin1234
+  -->
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  {% block estilo %}
+
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+    input[type=text] {
+      border: 2px solid green;
+      border-radius: 4px;
+    }
+
+    input[type=password] {
+      border: 2px solid green;
+      border-radius: 4px;
+    }
+
+    body{
+      background-image: url("https://cdn.pixabay.com/photo/2017/03/14/08/36/wood-2142308_960_720.jpg");
+      background-repeat: repeat;
+    }
+   
+    label{
+      color: brown;
+    }
+
+    .alert{
+      border-radius: 4px;
+    }
+
+   .restaurante{
+    text-align: center;
+    color: green;
+   }
+
+  </style>
+
+  {% endblock%}
+</head>
+
+<body>
+
+  <div class="container-fluid mt4">
+    <form action="submit" method="POST">{% csrf_token %}
+      <h2 class="restaurante">SEURESTAURANTE</h2>
+      <div class="form-group center">
+        <label for="username">Usuário</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Usuário">
+      </div>
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="senha">
+      </div>
+
+      <div>
+        {%for message in messages%}
+        <div class="alert alert-danger">
+          <strong>Error!</strong> {{message}}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Acessar</button>
+      </div>
+
+    </form>
+
+  </div>
+
+
+</body>
+
+</html>
